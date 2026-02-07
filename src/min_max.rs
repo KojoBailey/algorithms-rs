@@ -6,10 +6,10 @@ pub fn find_min<T: PartialOrd>(arr: &[T]) -> Option<(&T, usize)> {
     compare(PartialOrd::lt, &arr)
 }
 
-fn compare<F, T>(op: F, arr: &[T]) -> Option<(&T, usize)>
+fn compare<F, T>(mut op: F, arr: &[T]) -> Option<(&T, usize)>
 where
     T: PartialOrd,
-    F: Fn(&T, &T) -> bool,
+    F: FnMut(&T, &T) -> bool,
 {
     let (first, rest) = arr.split_first()?;
 

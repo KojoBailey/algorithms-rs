@@ -1,13 +1,27 @@
 mod min_max;
 
 fn main() {
-    let arr = [4i32, 8, 22, 94, 44, 55, 92, 83, 17, -23];
+    let arr_i32 = [4i32, 8, 22, 94, 44, 55, 92, 83, 17, -23];
 
-    if let Some((max_v, max_l)) = min_max::find_max(&arr) {
-        println!("Max: {} at {}", max_v, max_l);
+    println!("arr_i32: {:?}", arr_i32);
+
+    if let Some((val, idx)) = min_max::find_min(&arr_i32) {
+        println!("Min of arr_i32: {} at {}", val, idx);
     }
+    if let Some((val, idx)) = min_max::find_max(&arr_i32) {
+        println!("Max of arr_i32: {} at {}", val, idx);
+    }
+    
+    println!();
 
-    if let Some((min_v, min_l)) = min_max::find_min(&arr) {
-        println!("Min: {} at {}", min_v, min_l);
+    let arr_char = ['k', 'o', 'j', 'b', 'i', 'l', 'e', 'y'];
+
+    println!("arr_char: {:?}", arr_char);
+
+    if let Some((val, idx)) = min_max::find_min(&arr_char) {
+        println!("Min of arr_char: {} at {}", val, idx);
+    }
+    if let Some((val, idx)) = min_max::find_max(&arr_char) {
+        println!("Max of arr_char: {} at {}", val, idx);
     }
 }

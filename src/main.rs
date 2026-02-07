@@ -24,4 +24,17 @@ fn main() {
     if let Some((val, idx)) = min_max::find_max(&arr_char) {
         println!("Max of arr_char: {} at {}", val, idx);
     }
+
+    println!();
+
+    let arr_f64 = [30.2134, 12.0190, 421.2304, 23.42069];
+
+    println!("arr_f64: {:?}", arr_f64);
+
+    if let Some((val, idx)) = min_max::find_min(&arr_f64) {
+        println!("Min of arr_f64: {} at {}", val, idx);
+    }
+    if let Some((val, idx)) = min_max::find_max(&arr_f64) {
+        println!("Max of arr_f64: {} at {}", val, idx);
+    }
 }

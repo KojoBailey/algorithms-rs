@@ -1,7 +1,9 @@
+/// Return the **first** maximum value and its index in an array.
 pub fn find_max<T: PartialOrd>(arr: &[T]) -> Option<(&T, usize)> {
     compare(PartialOrd::gt, &arr)
 }
 
+/// Return the **first** minimum value and its index in an array.
 pub fn find_min<T: PartialOrd>(arr: &[T]) -> Option<(&T, usize)> {
     compare(PartialOrd::lt, &arr)
 }

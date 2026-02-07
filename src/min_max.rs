@@ -3,16 +3,15 @@ pub fn find_max(arr: &[i32]) -> Option<(i32, usize)> {
         return None;
     }
 
-    let mut max: i32 = arr[0];
-    let mut loc: usize = 0;
-    for (i, &x) in arr[1..].iter().enumerate() {
-        if x > max {
-            max = x;
-            loc = i;
+    let result = arr.iter().enumerate().fold((arr[0], 0), |(max_val, max_idx), (i, &x)| {
+        if x > max_val {
+            (x, i)
+        } else {
+            (max_val, max_idx)
         }
-    }
+    });
 
-    Some((max, loc))
+    Some(result)
 }
 
 pub fn find_min(arr: &[i32]) -> Option<(i32, usize)> {
@@ -20,14 +19,13 @@ pub fn find_min(arr: &[i32]) -> Option<(i32, usize)> {
         return None;
     }
 
-    let mut min: i32 = arr[0];
-    let mut loc: usize = 0;
-    for (i, &x) in arr[1..].iter().enumerate() {
-        if x < min {
-            min = x;
-            loc = i;
+    let result = arr.iter().enumerate().fold((arr[0], 0), |(min_val, min_idx), (i, &x)| {
+        if x < min_val {
+            (x, i)
+        } else {
+            (min_val, min_idx)
         }
-    }
+    });
 
-    Some((min, loc))
+    Some(result)
 }

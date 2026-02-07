@@ -1,7 +1,7 @@
-pub fn find_max<T: Ord + Copy>(arr: &[T]) -> Option<(T, usize)> {
+pub fn find_max<T: Ord>(arr: &[T]) -> Option<(&T, usize)> {
     let (first, rest) = arr.split_first()?;
     
-    Some(rest.iter().enumerate().fold((*first, 0), |(max_val, max_idx), (i, &x)| {
+    Some(rest.iter().enumerate().fold((first, 0), |(max_val, max_idx), (i, x)| {
         if x > max_val {
             (x, i + 1)
         } else {
@@ -10,10 +10,10 @@ pub fn find_max<T: Ord + Copy>(arr: &[T]) -> Option<(T, usize)> {
     }))
 }
 
-pub fn find_min<T: Ord + Copy>(arr: &[T]) -> Option<(T, usize)> {
+pub fn find_min<T: Ord>(arr: &[T]) -> Option<(&T, usize)> {
     let (first, rest) = arr.split_first()?;
 
-    Some(rest.iter().enumerate().fold((*first, 0), |(min_val, min_idx), (i, &x)| {
+    Some(rest.iter().enumerate().fold((first, 0), |(min_val, min_idx), (i, x)| {
         if x < min_val {
             (x, i + 1)
         } else {

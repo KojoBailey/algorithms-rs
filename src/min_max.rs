@@ -1,22 +1,21 @@
 pub fn find_max<T: PartialOrd>(arr: &[T]) -> Option<(&T, usize)> {
-    let (first, rest) = arr.split_first()?;
-
-    Some(rest.iter().enumerate().fold((first, 0),
-    |(max_val, max_idx), (i, x)| {
-        if x > max_val {
-            (x, i + 1)
-        } else {
-            (max_val, max_idx)
-        }
-    }))
+    compare(PartialOrd::gt, &arr)
 }
 
 pub fn find_min<T: PartialOrd>(arr: &[T]) -> Option<(&T, usize)> {
+    compare(PartialOrd::lt, &arr)
+}
+
+fn compare<F, T>(op: F, arr: &[T]) -> Option<(&T, usize)>
+where
+    T: PartialOrd,
+    F: Fn(&T, &T) -> bool,
+{
     let (first, rest) = arr.split_first()?;
 
     Some(rest.iter().enumerate().fold((first, 0),
     |(min_val, min_idx), (i, x)| {
-        if x < min_val {
+        if op(&x, &min_val) {
             (x, i + 1)
         } else {
             (min_val, min_idx)

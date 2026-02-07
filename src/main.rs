@@ -27,7 +27,7 @@ fn main() {
 
     println!();
 
-    let arr_f64 = [30.2134, 12.0190, 421.2304, 23.42069];
+    let arr_f64 = [30.2134f64, 12.0190, 421.2304, 23.42069];
 
     println!("arr_f64: {:?}", arr_f64);
 
@@ -36,5 +36,22 @@ fn main() {
     }
     if let Some((val, idx)) = min_max::find_max(&arr_f64) {
         println!("Max of arr_f64: {} at {}", val, idx);
+    }
+
+    println!();
+
+    // Edge Case: NaN is always false on comparison, so if it's the first list element,
+    // it will result as the "winner" of whatever find.
+
+    #[allow(non_snake_case)]
+    let arr_NaN = [f64::NAN, 30.2134, 12.0190, 421.2304, 23.42069];
+
+    println!("arr_NaN: {:?}", arr_NaN);
+
+    if let Some((val, idx)) = min_max::find_min(&arr_NaN) {
+        println!("Min of arr_NaN: {} at {}", val, idx);
+    }
+    if let Some((val, idx)) = min_max::find_max(&arr_NaN) {
+        println!("Max of arr_NaN: {} at {}", val, idx);
     }
 }

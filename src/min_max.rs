@@ -14,11 +14,11 @@ where
     let (first, rest) = arr.split_first()?;
 
     Some(rest.iter().enumerate().fold((first, 0),
-    |(min_val, min_idx), (i, x)| {
-        if op(&x, &min_val) {
+    |(best_val, best_idx), (i, x)| {
+        if op(&x, &best_val) {
             (x, i + 1)
         } else {
-            (min_val, min_idx)
+            (best_val, best_idx)
         }
     }))
 }
